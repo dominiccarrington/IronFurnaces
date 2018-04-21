@@ -1,14 +1,14 @@
 [
 {
-  "modid": "minecraftsuggestions",
-  "name": "Minecraft Suggestions",
-  "description": "Adds suggestions from the community on /r/minecraftsuggestions",
+  "modid": "ironfurnaces",
+  "name": "Iron Furnaces",
+  "description": "A port of iron furnaces from LittleThings",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
   "authorList": ["RageGamingPE"],
-  "credits": "/r/minecraftsuggestions for all the ideas",
+  "credits": "RageGamingPE [Programming], GingerMikie [Textures]",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

@@ -7,7 +7,7 @@ public class LibMisc
     public static final String MOD_ID = "ironfurnaces";
     public static final String MOD_NAME = "Iron Furnaces";
 
-    public static final String VERSION = MinecraftForge.MC_VERSION + "-1.0.0.0";
+    public static final String VERSION = MinecraftForge.MC_VERSION + "-GRADLE:VERSION";
     public static final String DEPENDENCIES = "";
 
     public static final String CLIENT_PROXY = "com.ragegamingpe.ironfurnaces.client.ClientProxy";
