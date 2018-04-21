@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 public class IronFurnaces
 {
     @Mod.Instance
-    public static com.ragegamingpe.ironfurnaces.common.IronFurnaces instance;
+    public static IronFurnaces instance;
 
     @SidedProxy(clientSide = LibMisc.CLIENT_PROXY, serverSide = LibMisc.COMMON_PROXY)
     public static CommonProxy proxy;

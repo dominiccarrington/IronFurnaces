@@ -1,0 +1,21 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "###",
+    "#F#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "type": "forge:ore_dict",
+      "ore": "ingotGold"
+    },
+    "F": {
+      "item": "ironfurnaces:iron_furnace"
+    }
+  },
+  "result": {
+    "item": "ironfurnaces:gold_furnace",
+    "data": 0
+  }
+}

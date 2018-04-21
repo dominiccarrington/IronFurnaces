@@ -1,0 +1,21 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "###",
+    "#F#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "type": "forge:ore_dict",
+      "ore": "gemDiamond"
+    },
+    "F": {
+      "item": "ironfurnaces:gold_furnace"
+    }
+  },
+  "result": {
+    "item": "ironfurnaces:diamond_furnace",
+    "data": 0
+  }
+}
