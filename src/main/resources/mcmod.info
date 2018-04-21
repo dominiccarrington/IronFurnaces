@@ -1,0 +1,16 @@
+[
+{
+  "modid": "minecraftsuggestions",
+  "name": "Minecraft Suggestions",
+  "description": "Adds suggestions from the community on /r/minecraftsuggestions",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["RageGamingPE"],
+  "credits": "/r/minecraftsuggestions for all the ideas",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

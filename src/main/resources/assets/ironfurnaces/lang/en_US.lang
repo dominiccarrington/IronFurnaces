@@ -1,0 +1,11 @@
+tile.ironfurnaces:iron_furnace.name=Iron Furnace
+tile.ironfurnaces:gold_furnace.name=Gold Furnace
+tile.ironfurnaces:diamond_furnace.name=Diamond Furnace
+tile.ironfurnaces:emerald_furnace.name=Emerald Furnace
+tile.ironfurnaces:obsidian_furnace.name=Obsidian Furnace
+
+container.ironfurnaces:iron_furnace.name=Iron Furnace
+container.ironfurnaces:gold_furnace.name=Gold Furnace
+container.ironfurnaces:diamond_furnace.name=Diamond Furnace
+container.ironfurnaces:emerald_furnace.name=Emerald Furnace
+container.ironfurnaces:obsidian_furnace.name=Obsidian Furnace
