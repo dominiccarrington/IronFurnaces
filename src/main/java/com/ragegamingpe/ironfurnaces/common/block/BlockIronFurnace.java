@@ -1,8 +1,9 @@
 package com.ragegamingpe.ironfurnaces.common.block;
 
-import com.ragegamingpe.ironfurnaces.common.block.base.ModBlockContainer;
+import com.ragegamingpe.ironfurnaces.common.block.base.ModBlockVariants;
 import com.ragegamingpe.ironfurnaces.common.block.te.TileEntityIronFurnace;
 import net.minecraft.block.Block;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -10,12 +11,16 @@ import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Enchantments;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
@@ -23,6 +28,7 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.IWorldNameable;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -31,20 +37,21 @@ import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Random;
 
-public class BlockIronFurnace extends ModBlockContainer
+public class BlockIronFurnace extends ModBlockVariants implements ITileEntityProvider
 {
     public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
     public static final PropertyBool LIT = PropertyBool.create("lit");
-    private final Variant variant;
     private static boolean keepInventory;
 
-    public BlockIronFurnace(Variant variant)
+    private Variant variant;
+
+    public BlockIronFurnace(BaseVariant variant)
     {
-        super(Material.ROCK, variant.name().toLowerCase() + "_furnace");
-        this.variant = variant;
+        super(Material.ROCK, "furnace", variant);
+        this.variant = (Variant) variant;
         this.setCreativeTab(CreativeTabs.DECORATIONS);
         this.setDefaultState(makeDefaultState());
-        this.setHardness(variant.getBaseBlock().getBlockHardness(null, null, null) <= 3.5F ? 3.5F : variant.getBaseBlock().getBlockHardness(null, null, null));
+        this.setHardness(this.variant.getBaseBlock().getBlockHardness(null, null, null) <= 3.5F ? 3.5F : this.variant.getBaseBlock().getBlockHardness(null, null, null));
         this.setSoundType(SoundType.STONE);
     }
 
@@ -183,6 +190,7 @@ public class BlockIronFurnace extends ModBlockContainer
         }
 
         super.breakBlock(worldIn, pos, state);
+        worldIn.removeTileEntity(pos);
     }
 
     @Override
@@ -236,6 +244,51 @@ public class BlockIronFurnace extends ModBlockContainer
         return new TileEntityIronFurnace(this.variant);
     }
 
+
+    protected boolean isInvalidNeighbor(World worldIn, BlockPos pos, EnumFacing facing)
+    {
+        return worldIn.getBlockState(pos.offset(facing)).getMaterial() == Material.CACTUS;
+    }
+
+    protected boolean hasInvalidNeighbor(World worldIn, BlockPos pos)
+    {
+        return this.isInvalidNeighbor(worldIn, pos, EnumFacing.NORTH) || this.isInvalidNeighbor(worldIn, pos, EnumFacing.SOUTH) || this.isInvalidNeighbor(worldIn, pos, EnumFacing.WEST) || this.isInvalidNeighbor(worldIn, pos, EnumFacing.EAST);
+    }
+
+    @Override
+    public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, ItemStack stack)
+    {
+        if (te instanceof IWorldNameable && ((IWorldNameable) te).hasCustomName()) {
+            player.addStat(StatList.getBlockStats(this));
+            player.addExhaustion(0.005F);
+
+            if (worldIn.isRemote) {
+                return;
+            }
+
+            int i = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, stack);
+            Item item = this.getItemDropped(state, worldIn.rand, i);
+
+            if (item == Items.AIR) {
+                return;
+            }
+
+            ItemStack itemstack = new ItemStack(item, this.quantityDropped(worldIn.rand));
+            itemstack.setStackDisplayName(((IWorldNameable) te).getName());
+            spawnAsEntity(worldIn, pos, itemstack);
+        } else {
+            super.harvestBlock(worldIn, player, pos, state, null, stack);
+        }
+    }
+
+    @Override
+    public boolean eventReceived(IBlockState state, World worldIn, BlockPos pos, int id, int param)
+    {
+        super.eventReceived(state, worldIn, pos, id, param);
+        TileEntity tileentity = worldIn.getTileEntity(pos);
+        return tileentity != null && tileentity.receiveClientEvent(id, param);
+    }
+
     public static void setState(boolean burning, World world, BlockPos pos)
     {
         IBlockState currentState = world.getBlockState(pos);
@@ -251,7 +304,7 @@ public class BlockIronFurnace extends ModBlockContainer
 
     }
 
-    public enum Variant
+    public enum Variant implements BaseVariant
     {
         IRON(2, Blocks.IRON_BLOCK),
         GOLD(3, Blocks.GOLD_BLOCK),
