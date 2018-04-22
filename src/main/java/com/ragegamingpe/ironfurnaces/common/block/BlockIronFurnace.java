@@ -45,7 +45,7 @@ public class BlockIronFurnace extends ModBlockVariants implements ITileEntityPro
 
     private Variant variant;
 
-    public BlockIronFurnace(BaseVariant variant)
+    public BlockIronFurnace(IBaseVariant variant)
     {
         super(Material.ROCK, "furnace", variant);
         this.variant = (Variant) variant;
@@ -304,7 +304,7 @@ public class BlockIronFurnace extends ModBlockVariants implements ITileEntityPro
 
     }
 
-    public enum Variant implements BaseVariant
+    public enum Variant implements IBaseVariant
     {
         IRON(2, Blocks.IRON_BLOCK),
         GOLD(3, Blocks.GOLD_BLOCK),

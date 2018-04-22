@@ -11,36 +11,36 @@ import java.util.Map;
 
 public class ModBlockVariants extends ModBlock
 {
-    protected BaseVariant variant;
+    protected IBaseVariant variant;
 
-    public ModBlockVariants(Material material, MapColor color, String regName, BaseVariant variant)
+    public ModBlockVariants(Material material, MapColor color, String regName, IBaseVariant variant)
     {
         super(material, color, variant.getName() + "_" + regName);
         this.variant = variant;
     }
 
-    public ModBlockVariants(Material materialIn, String regName, BaseVariant variant)
+    public ModBlockVariants(Material materialIn, String regName, IBaseVariant variant)
     {
         this(materialIn, materialIn.getMaterialMapColor(), regName, variant);
     }
 
-    public static <T extends Enum & BaseVariant, B extends ModBlockVariants> Map<T, B> constructVariants(Class<B> clazz, Class<T> variants)
+    public static <T extends Enum & IBaseVariant, B extends ModBlockVariants> Map<T, B> constructVariants(Class<B> clazz, Class<T> variants)
     {
         return constructVariants(clazz, null, null, variants);
     }
 
-    public static <T extends Enum & BaseVariant, B extends ModBlockVariants> Map<T, B> constructVariants(Class<B> clazz, Material material, String baseName, Class<T> variants)
+    public static <T extends Enum & IBaseVariant, B extends ModBlockVariants> Map<T, B> constructVariants(Class<B> clazz, Material material, String baseName, Class<T> variants)
     {
         T[] types = variants.getEnumConstants();
 
         Constructor<? extends ModBlockVariants> constructor = null;
         int parameters = 0;
         try {
-            constructor = clazz.getConstructor(BaseVariant.class);
+            constructor = clazz.getConstructor(IBaseVariant.class);
             parameters = 1;
         } catch (NoSuchMethodException e) {
             try {
-                constructor = clazz.getConstructor(Material.class, String.class, BaseVariant.class);
+                constructor = clazz.getConstructor(Material.class, String.class, IBaseVariant.class);
                 parameters = 3;
             } catch (NoSuchMethodException e1) {
                 IronFurnaces.logger.error("No constructor found for " + clazz.getSimpleName() + "... Block not loaded.");
@@ -67,7 +67,7 @@ public class ModBlockVariants extends ModBlock
         return allBlocks;
     }
 
-    public interface BaseVariant
+    public interface IBaseVariant
     {
         public default String getName()
         {
