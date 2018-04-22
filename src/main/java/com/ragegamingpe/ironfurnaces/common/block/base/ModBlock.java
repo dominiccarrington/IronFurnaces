@@ -4,18 +4,24 @@ import com.ragegamingpe.ironfurnaces.client.model.ModelLoader;
 import com.ragegamingpe.ironfurnaces.common.lib.LibMisc;
 import com.ragegamingpe.ironfurnaces.common.lib.ModBlocks;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 
 public class ModBlock extends Block implements IModBlock
 {
-    public ModBlock(Material materialIn, String regName)
+    public ModBlock(Material material, MapColor color, String regName)
     {
-        super(materialIn);
+        super(material, color);
 
         this.setUnlocalizedName(regName);
         this.setRegistryName(LibMisc.MOD_ID, regName);
         ModBlocks.ALL_BLOCKS.add(this);
+    }
+
+    public ModBlock(Material material, String regName)
+    {
+        this(material, material.getMaterialMapColor(), regName);
     }
 
     @Override

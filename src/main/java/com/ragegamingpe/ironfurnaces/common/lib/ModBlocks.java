@@ -22,5 +22,7 @@ public class ModBlocks
         DIAMOND_FURNACE = new BlockIronFurnace(BlockIronFurnace.Variant.DIAMOND);
         EMERALD_FURNACE = new BlockIronFurnace(BlockIronFurnace.Variant.EMERALD);
         OBSIDIAN_FURNACE = new BlockIronFurnace(BlockIronFurnace.Variant.OBSIDIAN);
+
+
     }
 }
