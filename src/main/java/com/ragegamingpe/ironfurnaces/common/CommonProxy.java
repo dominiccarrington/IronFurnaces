@@ -24,6 +24,7 @@ public class CommonProxy
 
     public void preInit(FMLPreInitializationEvent event)
     {
+        IronFurnaces.logger = event.getModLog();
         if (!registeredEvents) {
             MinecraftForge.EVENT_BUS.register(this);
             registeredEvents = true;
