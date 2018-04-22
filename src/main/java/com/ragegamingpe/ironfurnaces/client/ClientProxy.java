@@ -7,6 +7,7 @@ import com.ragegamingpe.ironfurnaces.common.lib.ModBlocks;
 import com.ragegamingpe.ironfurnaces.common.lib.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemMeshDefinition;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
@@ -15,6 +16,8 @@ public class ClientProxy extends CommonProxy
     @Override
     public void preInit(FMLPreInitializationEvent event)
     {
+        MinecraftForge.EVENT_BUS.register(this);
+        CommonProxy.registeredEvents = true;
         super.preInit(event);
         ModBlocks.ALL_BLOCKS.forEach(IModBlock::registerModels);
         ModItems.ALL_ITEMS.forEach(IModItem::registerModels);
@@ -28,10 +31,8 @@ public class ClientProxy extends CommonProxy
         ModItems.ALL_ITEMS.forEach((item) -> {
             ItemMeshDefinition def = item.registerCustomMeshDefinition();
 
-            if (def == null)
-                item.registerRender();
-            else
-                Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, def);
+            if (def == null) item.registerRender();
+            else Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, def);
         });
     }
 }

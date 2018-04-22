@@ -20,9 +20,14 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class CommonProxy
 {
+    protected static boolean registeredEvents = false;
+
     public void preInit(FMLPreInitializationEvent event)
     {
-        MinecraftForge.EVENT_BUS.register(this);
+        if (!registeredEvents) {
+            MinecraftForge.EVENT_BUS.register(this);
+            registeredEvents = true;
+        }
         TileEntity.register(LibMisc.MOD_ID + ":furnace", TileEntityIronFurnace.class);
     }
 
