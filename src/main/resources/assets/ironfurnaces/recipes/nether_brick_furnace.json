@@ -1,0 +1,20 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "###",
+    "#F#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:nether_brick"
+    },
+    "F": {
+      "item": "ironfurnaces:netherrack_furnace"
+    }
+  },
+  "result": {
+    "item": "ironfurnaces:nether_brick_furnace",
+    "data": 0
+  }
+}

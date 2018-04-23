@@ -1,0 +1,21 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "###",
+    "#F#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:quartz_block",
+      "data": 0
+    },
+    "F": {
+      "item": "ironfurnaces:nether_brick_furnace"
+    }
+  },
+  "result": {
+    "item": "ironfurnaces:quartz_furnace",
+    "data": 0
+  }
+}

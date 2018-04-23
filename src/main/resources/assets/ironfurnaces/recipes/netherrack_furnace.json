@@ -1,0 +1,17 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:netherrack"
+    }
+  },
+  "result": {
+    "item": "ironfurnaces:netherrack_furnace",
+    "data": 0
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "forge:ore_shaped",
+  "pattern": [
+    "###",
+    "#F#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:purpur_block"
+    },
+    "F": {
+      "item": "ironfurnaces:end_stone_furnace"
+    }
+  },
+  "result": {
+    "item": "ironfurnaces:purpur_furnace",
+    "data": 0
+  }
+}
