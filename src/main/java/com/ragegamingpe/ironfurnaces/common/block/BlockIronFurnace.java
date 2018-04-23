@@ -289,6 +289,12 @@ public class BlockIronFurnace extends ModBlockVariants implements ITileEntityPro
         return tileentity != null && tileentity.receiveClientEvent(id, param);
     }
 
+    @Override
+    public boolean isFireSource(World world, BlockPos pos, EnumFacing side)
+    {
+        return this.variant == Variant.NETHERRACK;
+    }
+
     public static void setState(boolean burning, World world, BlockPos pos)
     {
         IBlockState currentState = world.getBlockState(pos);

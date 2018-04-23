@@ -15,7 +15,9 @@ import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -27,17 +29,10 @@ public class TileEntityIronFurnace extends TileEntityLockable implements ISidedI
     private static final int[] SLOTS_TOP = new int[]{0};
     private static final int[] SLOTS_BOTTOM = new int[]{2, 1};
     private static final int[] SLOTS_SIDES = new int[]{1};
-    /**
-     * The ItemStacks that hold the items currently being used in the furnace
-     */
+
     private NonNullList<ItemStack> furnaceItemStacks = NonNullList.withSize(3, ItemStack.EMPTY);
-    /**
-     * The number of ticks that the furnace will keep burning
-     */
+
     private int furnaceBurnTime;
-    /**
-     * The number of ticks that a fresh copy of the currently-burning item would keep the furnace burning for
-     */
     private int currentItemBurnTime;
     private int cookTime;
     private int totalCookTime;
@@ -87,9 +82,6 @@ public class TileEntityIronFurnace extends TileEntityLockable implements ISidedI
         return compound;
     }
 
-    /**
-     * Returns the number of slots in the inventory.
-     */
     @Override
     public int getSizeInventory()
     {
@@ -108,36 +100,24 @@ public class TileEntityIronFurnace extends TileEntityLockable implements ISidedI
         return true;
     }
 
-    /**
-     * Returns the stack in the given slot.
-     */
     @Override
     public ItemStack getStackInSlot(int index)
     {
         return this.furnaceItemStacks.get(index);
     }
 
-    /**
-     * Removes up to a specified number of items from an inventory slot and returns them in a new stack.
-     */
     @Override
     public ItemStack decrStackSize(int index, int count)
     {
         return ItemStackHelper.getAndSplit(this.furnaceItemStacks, index, count);
     }
 
-    /**
-     * Removes a stack from the given slot and returns it.
-     */
     @Override
     public ItemStack removeStackFromSlot(int index)
     {
         return ItemStackHelper.getAndRemove(this.furnaceItemStacks, index);
     }
 
-    /**
-     * Sets the given item stack to the specified slot in the inventory (can be crafting or armor sections).
-     */
     @Override
     public void setInventorySlotContents(int index, ItemStack stack)
     {
@@ -156,18 +136,12 @@ public class TileEntityIronFurnace extends TileEntityLockable implements ISidedI
         }
     }
 
-    /**
-     * Get the name of this object. For players this returns their username
-     */
     @Override
     public String getName()
     {
         return this.hasCustomName() ? this.furnaceCustomName : "container." + LibMisc.MOD_ID + ":" + this.variant.name().toLowerCase() + "_furnace.name";
     }
 
-    /**
-     * Returns true if this thing is named
-     */
     @Override
     public boolean hasCustomName()
     {
@@ -179,18 +153,12 @@ public class TileEntityIronFurnace extends TileEntityLockable implements ISidedI
         this.furnaceCustomName = p_145951_1_;
     }
 
-    /**
-     * Returns the maximum stack size for a inventory slot. Seems to always be 64, possibly will be extended.
-     */
     @Override
     public int getInventoryStackLimit()
     {
         return 64;
     }
 
-    /**
-     * Furnace isBurning
-     */
     public boolean isBurning()
     {
         return this.furnaceBurnTime > 0;
@@ -202,9 +170,6 @@ public class TileEntityIronFurnace extends TileEntityLockable implements ISidedI
         return inventory.getField(0) > 0;
     }
 
-    /**
-     * Like the old updateEntity(), except more generic.
-     */
     @Override
     public void update()
     {
@@ -216,6 +181,18 @@ public class TileEntityIronFurnace extends TileEntityLockable implements ISidedI
         }
 
         if (!this.world.isRemote) {
+            if (this.isBurning()) {
+                World world = this.world;
+                BlockPos pos = this.getPos();
+
+                if (world.rand.nextFloat() > 0.95 &&
+                        world.getBlockState(pos.up()).getBlock() == Blocks.AIR &&
+                        this.furnaceBurnTime % 10 == 0 &&
+                        this.variant == BlockIronFurnace.Variant.NETHERRACK) {
+                    world.setBlockState(pos.up(), Blocks.FIRE.getDefaultState());
+                }
+            }
+
             ItemStack itemstack = this.furnaceItemStacks.get(1);
 
             if (this.isBurning() || !itemstack.isEmpty() && !this.furnaceItemStacks.get(0).isEmpty()) {
@@ -270,9 +247,6 @@ public class TileEntityIronFurnace extends TileEntityLockable implements ISidedI
         return (int) (200 / variant.getSpeedFactor());
     }
 
-    /**
-     * Returns true if the furnace can smelt an item, i.e. has a source item, destination stack isn't full, etc.
-     */
     private boolean canSmelt()
     {
         if (this.furnaceItemStacks.get(0).isEmpty()) {
@@ -299,9 +273,6 @@ public class TileEntityIronFurnace extends TileEntityLockable implements ISidedI
         }
     }
 
-    /**
-     * Turn one item from the furnace source stack into the appropriate smelted item in the furnace result stack
-     */
     public void smeltItem()
     {
         if (this.canSmelt()) {
@@ -323,9 +294,6 @@ public class TileEntityIronFurnace extends TileEntityLockable implements ISidedI
         }
     }
 
-    /**
-     * Don't rename this method to canInteractWith due to conflicts with Container
-     */
     @Override
     public boolean isUsableByPlayer(EntityPlayer player)
     {
@@ -342,10 +310,6 @@ public class TileEntityIronFurnace extends TileEntityLockable implements ISidedI
     {
     }
 
-    /**
-     * Returns true if automation is allowed to insert the given stack (ignoring stack size) into the given slot. For
-     * guis use Slot.isItemValid
-     */
     @Override
     public boolean isItemValidForSlot(int index, ItemStack stack)
     {
@@ -369,18 +333,12 @@ public class TileEntityIronFurnace extends TileEntityLockable implements ISidedI
         }
     }
 
-    /**
-     * Returns true if automation can insert the given item in the given slot from the given side.
-     */
     @Override
     public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction)
     {
         return this.isItemValidForSlot(index, itemStackIn);
     }
 
-    /**
-     * Returns true if automation can extract the given item in the given slot from the given side.
-     */
     @Override
     public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction)
     {
@@ -462,12 +420,9 @@ public class TileEntityIronFurnace extends TileEntityLockable implements ISidedI
     public <T> T getCapability(net.minecraftforge.common.capabilities.Capability<T> capability, @javax.annotation.Nullable net.minecraft.util.EnumFacing facing)
     {
         if (facing != null && capability == net.minecraftforge.items.CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
-            if (facing == EnumFacing.DOWN)
-                return (T) handlerBottom;
-            else if (facing == EnumFacing.UP)
-                return (T) handlerTop;
-            else
-                return (T) handlerSide;
+            if (facing == EnumFacing.DOWN) return (T) handlerBottom;
+            else if (facing == EnumFacing.UP) return (T) handlerTop;
+            else return (T) handlerSide;
         return super.getCapability(capability, facing);
     }
 }
