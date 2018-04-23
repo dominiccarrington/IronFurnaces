@@ -310,20 +310,27 @@ public class BlockIronFurnace extends ModBlockVariants implements ITileEntityPro
         GOLD(3, Blocks.GOLD_BLOCK),
         DIAMOND(4, Blocks.DIAMOND_BLOCK),
         EMERALD(4, Blocks.EMERALD_BLOCK),
-        OBSIDIAN(5, Blocks.OBSIDIAN);
+        OBSIDIAN(5, Blocks.OBSIDIAN),
+
+        NETHERRACK(1, Blocks.NETHERRACK),
+        NETHER_BRICK(1.5F, Blocks.NETHER_BRICK),
+        QUARTZ(4, Blocks.QUARTZ_BLOCK),
+
+        END_STONE(2.5F, Blocks.END_STONE),
+        PURPUR(5, Blocks.PURPUR_BLOCK);
 
         public static final HashMap<String, Variant> LOOKUP_TABLE = new HashMap<>();
 
-        private final int speedFactor;
+        private final float speedFactor;
         private final Block baseBlock;
 
-        Variant(int speedFactor, Block base)
+        Variant(float speedFactor, Block base)
         {
             this.speedFactor = speedFactor;
             this.baseBlock = base;
         }
 
-        public int getSpeedFactor()
+        public float getSpeedFactor()
         {
             return this.speedFactor;
         }

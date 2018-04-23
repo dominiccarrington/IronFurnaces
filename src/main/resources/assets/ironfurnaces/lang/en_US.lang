@@ -3,9 +3,20 @@ tile.ironfurnaces:gold_furnace.name=Gold Furnace
 tile.ironfurnaces:diamond_furnace.name=Diamond Furnace
 tile.ironfurnaces:emerald_furnace.name=Emerald Furnace
 tile.ironfurnaces:obsidian_furnace.name=Obsidian Furnace
+tile.ironfurnaces:netherrack_furnace.name=Netherrack Furnace
+tile.ironfurnaces:nether_brick_furnace.name=Nether Brick Furnace
+tile.ironfurnaces:quartz_furnace.name=Quartz Furnace
+tile.ironfurnaces:end_stone_furnace.name=End Stone Furnace
+tile.ironfurnaces:purpur_furnace.name=Purpur Furnace
+
 
 container.ironfurnaces:iron_furnace.name=Iron Furnace
 container.ironfurnaces:gold_furnace.name=Gold Furnace
 container.ironfurnaces:diamond_furnace.name=Diamond Furnace
 container.ironfurnaces:emerald_furnace.name=Emerald Furnace
 container.ironfurnaces:obsidian_furnace.name=Obsidian Furnace
+container.ironfurnaces:netherrack_furnace.name=Netherrack Furnace
+container.ironfurnaces:nether_brick_furnace.name=Nether Brick Furnace
+container.ironfurnaces:quartz_furnace.name=Quartz Furnace
+container.ironfurnaces:end_stone_furnace.name=End Stone Furnace
+container.ironfurnaces:purpur_furnace.name=Purpur Furnace

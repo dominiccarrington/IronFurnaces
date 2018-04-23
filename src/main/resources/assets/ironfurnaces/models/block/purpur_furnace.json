@@ -1,0 +1,8 @@
+{
+  "parent": "block/orientable",
+  "textures": {
+    "top": "minecraft:blocks/purpur_block",
+    "front": "ironfurnaces:blocks/purpur_furnace_front_off",
+    "side": "minecraft:blocks/purpur_block"
+  }
+}

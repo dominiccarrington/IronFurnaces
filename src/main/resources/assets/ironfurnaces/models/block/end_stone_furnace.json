@@ -1,0 +1,8 @@
+{
+  "parent": "block/orientable",
+  "textures": {
+    "top": "minecraft:blocks/end_stone",
+    "front": "ironfurnaces:blocks/end_stone_furnace_front_off",
+    "side": "minecraft:blocks/end_stone"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "block/orientable",
+  "textures": {
+    "top": "minecraft:blocks/quartz_block_side",
+    "front": "ironfurnaces:blocks/quartz_furnace_front_on",
+    "side": "minecraft:blocks/quartz_block_side"
+  }
+}

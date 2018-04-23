@@ -1,7 +1,7 @@
 {
   "parent": "block/orientable",
   "textures": {
-    "top": "ironfurnaces:blocks/emerald_furnace_side",
+    "top": "minecraft:blocks/emerald_block",
     "front": "ironfurnaces:blocks/emerald_furnace_front_on",
     "side": "ironfurnaces:blocks/emerald_furnace_side"
   }

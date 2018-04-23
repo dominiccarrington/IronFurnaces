@@ -267,7 +267,7 @@ public class TileEntityIronFurnace extends TileEntityLockable implements ISidedI
 
     public int getCookTime(ItemStack stack)
     {
-        return 200 / variant.getSpeedFactor();
+        return (int) (200 / variant.getSpeedFactor());
     }
 
     /**
