@@ -1,6 +1,8 @@
 package com.ragegamingpe.ironfurnaces.common;
 
 import com.ragegamingpe.ironfurnaces.common.block.base.ModBlock;
+import com.ragegamingpe.ironfurnaces.common.block.te.TileEntityHeatAbsorber;
+import com.ragegamingpe.ironfurnaces.common.block.te.TileEntityHeatGenerator;
 import com.ragegamingpe.ironfurnaces.common.block.te.TileEntityIronFurnace;
 import com.ragegamingpe.ironfurnaces.common.item.base.ModItem;
 import com.ragegamingpe.ironfurnaces.common.lib.LibMisc;
@@ -9,7 +11,6 @@ import com.ragegamingpe.ironfurnaces.common.lib.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -17,6 +18,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CommonProxy
 {
@@ -29,7 +31,6 @@ public class CommonProxy
             MinecraftForge.EVENT_BUS.register(this);
             registeredEvents = true;
         }
-        TileEntity.register(LibMisc.MOD_ID + ":furnace", TileEntityIronFurnace.class);
     }
 
     public void init(FMLInitializationEvent event)
@@ -48,6 +49,10 @@ public class CommonProxy
     public void registerBlocks(RegistryEvent.Register<Block> event)
     {
         event.getRegistry().registerAll(ModBlocks.ALL_BLOCKS.toArray(new ModBlock[ModBlocks.ALL_BLOCKS.size()]));
+
+        GameRegistry.registerTileEntity(TileEntityIronFurnace.class, LibMisc.MOD_ID + ":furnace");
+        GameRegistry.registerTileEntity(TileEntityHeatAbsorber.class, LibMisc.MOD_ID + ":heat_absorber");
+        GameRegistry.registerTileEntity(TileEntityHeatGenerator.class, LibMisc.MOD_ID + ":heat_generator");
     }
 
     @SubscribeEvent

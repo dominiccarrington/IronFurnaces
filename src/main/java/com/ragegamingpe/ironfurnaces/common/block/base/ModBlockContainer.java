@@ -1,6 +1,7 @@
 package com.ragegamingpe.ironfurnaces.common.block.base;
 
 import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -17,13 +18,17 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldNameable;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
 
 public abstract class ModBlockContainer extends ModBlock implements ITileEntityProvider
 {
     public ModBlockContainer(Material materialIn, String regName)
     {
-        super(materialIn, regName);
+        this(materialIn, materialIn.getMaterialMapColor(), regName);
+    }
+
+    public ModBlockContainer(Material material, MapColor color, String regName)
+    {
+        super(material, color, regName);
         this.hasTileEntity = true;
     }
 
@@ -44,7 +49,7 @@ public abstract class ModBlockContainer extends ModBlock implements ITileEntityP
     @Override
     public EnumBlockRenderType getRenderType(IBlockState state)
     {
-        return EnumBlockRenderType.INVISIBLE;
+        return EnumBlockRenderType.MODEL;
     }
 
     /**
@@ -62,7 +67,7 @@ public abstract class ModBlockContainer extends ModBlock implements ITileEntityP
      * Block.removedByPlayer
      */
     @Override
-    public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, @Nullable TileEntity te, ItemStack stack)
+    public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te, ItemStack stack)
     {
         if (te instanceof IWorldNameable && ((IWorldNameable) te).hasCustomName()) {
             player.addStat(StatList.getBlockStats(this));

@@ -5,6 +5,7 @@ import com.ragegamingpe.ironfurnaces.common.lib.LibMisc;
 import com.ragegamingpe.ironfurnaces.common.lib.ModItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public class ModItem extends Item implements IModItem
 {
@@ -21,6 +22,12 @@ public class ModItem extends Item implements IModItem
     public String getUnlocalizedName()
     {
         return String.format("item.%s:%s", LibMisc.MOD_ID, getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+    }
+
+    @Override
+    public String getUnlocalizedName(ItemStack itemStack)
+    {
+        return getUnlocalizedName();
     }
 
     @Override

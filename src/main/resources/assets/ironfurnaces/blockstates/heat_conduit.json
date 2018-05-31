@@ -1,0 +1,196 @@
+{
+  "variants": {
+    "down=false,east=false,north=false,south=false,up=false,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_m"
+    },
+    "down=false,east=false,north=false,south=false,up=false,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mw"
+    },
+    "down=false,east=false,north=false,south=false,up=true,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mu"
+    },
+    "down=false,east=false,north=false,south=false,up=true,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mwu"
+    },
+    "down=false,east=false,north=false,south=true,up=false,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_ms"
+    },
+    "down=false,east=false,north=false,south=true,up=false,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_msw"
+    },
+    "down=false,east=false,north=false,south=true,up=true,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_msu"
+    },
+    "down=false,east=false,north=false,south=true,up=true,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mswu"
+    },
+    "down=false,east=false,north=true,south=false,up=false,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mn"
+    },
+    "down=false,east=false,north=true,south=false,up=false,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnw"
+    },
+    "down=false,east=false,north=true,south=false,up=true,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnu"
+    },
+    "down=false,east=false,north=true,south=false,up=true,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnwu"
+    },
+    "down=false,east=false,north=true,south=true,up=false,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mns"
+    },
+    "down=false,east=false,north=true,south=true,up=false,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnsw"
+    },
+    "down=false,east=false,north=true,south=true,up=true,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnsu"
+    },
+    "down=false,east=false,north=true,south=true,up=true,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnswu"
+    },
+    "down=false,east=true,north=false,south=false,up=false,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_me"
+    },
+    "down=false,east=true,north=false,south=false,up=false,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mew"
+    },
+    "down=false,east=true,north=false,south=false,up=true,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_meu"
+    },
+    "down=false,east=true,north=false,south=false,up=true,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mewu"
+    },
+    "down=false,east=true,north=false,south=true,up=false,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mse"
+    },
+    "down=false,east=true,north=false,south=true,up=false,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_msew"
+    },
+    "down=false,east=true,north=false,south=true,up=true,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mseu"
+    },
+    "down=false,east=true,north=false,south=true,up=true,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_msewu"
+    },
+    "down=false,east=true,north=true,south=false,up=false,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mne"
+    },
+    "down=false,east=true,north=true,south=false,up=false,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnew"
+    },
+    "down=false,east=true,north=true,south=false,up=true,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mneu"
+    },
+    "down=false,east=true,north=true,south=false,up=true,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnewu"
+    },
+    "down=false,east=true,north=true,south=true,up=false,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnse"
+    },
+    "down=false,east=true,north=true,south=true,up=false,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnsew"
+    },
+    "down=false,east=true,north=true,south=true,up=true,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnseu"
+    },
+    "down=false,east=true,north=true,south=true,up=true,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnsewu"
+    },
+    "down=true,east=false,north=false,south=false,up=false,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_md"
+    },
+    "down=true,east=false,north=false,south=false,up=false,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mwd"
+    },
+    "down=true,east=false,north=false,south=false,up=true,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mud"
+    },
+    "down=true,east=false,north=false,south=false,up=true,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mwud"
+    },
+    "down=true,east=false,north=false,south=true,up=false,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_msd"
+    },
+    "down=true,east=false,north=false,south=true,up=false,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mswd"
+    },
+    "down=true,east=false,north=false,south=true,up=true,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_msud"
+    },
+    "down=true,east=false,north=false,south=true,up=true,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mswud"
+    },
+    "down=true,east=false,north=true,south=false,up=false,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnd"
+    },
+    "down=true,east=false,north=true,south=false,up=false,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnwd"
+    },
+    "down=true,east=false,north=true,south=false,up=true,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnud"
+    },
+    "down=true,east=false,north=true,south=false,up=true,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnwud"
+    },
+    "down=true,east=false,north=true,south=true,up=false,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnsd"
+    },
+    "down=true,east=false,north=true,south=true,up=false,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnswd"
+    },
+    "down=true,east=false,north=true,south=true,up=true,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnsud"
+    },
+    "down=true,east=false,north=true,south=true,up=true,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnswud"
+    },
+    "down=true,east=true,north=false,south=false,up=false,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_med"
+    },
+    "down=true,east=true,north=false,south=false,up=false,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mewd"
+    },
+    "down=true,east=true,north=false,south=false,up=true,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_meud"
+    },
+    "down=true,east=true,north=false,south=false,up=true,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mewud"
+    },
+    "down=true,east=true,north=false,south=true,up=false,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_msed"
+    },
+    "down=true,east=true,north=false,south=true,up=false,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_msewd"
+    },
+    "down=true,east=true,north=false,south=true,up=true,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mseud"
+    },
+    "down=true,east=true,north=false,south=true,up=true,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_msewud"
+    },
+    "down=true,east=true,north=true,south=false,up=false,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mned"
+    },
+    "down=true,east=true,north=true,south=false,up=false,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnewd"
+    },
+    "down=true,east=true,north=true,south=false,up=true,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mneud"
+    },
+    "down=true,east=true,north=true,south=false,up=true,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnewud"
+    },
+    "down=true,east=true,north=true,south=true,up=false,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnsed"
+    },
+    "down=true,east=true,north=true,south=true,up=false,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnsewd"
+    },
+    "down=true,east=true,north=true,south=true,up=true,west=false": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnseud"
+    },
+    "down=true,east=true,north=true,south=true,up=true,west=true": {
+      "model": "ironfurnaces:heat_conduit/heat_conduit_mnsewud"
+    }
+  }
+}
